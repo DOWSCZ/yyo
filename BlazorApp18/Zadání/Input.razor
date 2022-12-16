@@ -1,0 +1,34 @@
+﻿<div class="flex @Class">
+    
+    <input type="text" @bind="Text" @bind:event="oninput" placeholder="@Placeholder" class="
+componentInteractionAnimation componentBorderStyleInput
+font-bold text-center bg-componentPlaceholder/90 focus:bg-componentPlaceholder text-inputText px-4 py-1.5
+placeholder:font-bold  placeholder:text-componentPlaceholderText  focus:outline-none w-full"/>
+    
+</div>
+
+@code {
+
+
+    [Parameter]
+    public string Class { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnChanged { get; set; }
+
+
+    [Parameter]
+    public string Placeholder { get; set; }
+
+    public string? Text
+    {
+        get => _text;
+        set
+        {
+            _text = value;
+            OnChanged.InvokeAsync(value);
+        }
+    }
+
+    private string? _text;
+}

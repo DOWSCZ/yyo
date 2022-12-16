@@ -1,0 +1,509 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/*COMPONENTS*/
+
+.componentTextStyle {
+    @apply text-componentColorDarkest
+}
+
+.componentBorderStyle {
+    @apply  border-componentColorDarkest h-12 border-component  rounded-2xl shadow-md cursor-pointer hover:border-yellow-400/50 duration-200
+}
+
+.componentBorderStyleInput {
+    @apply border-inputsBorder h-12 border-component  rounded-2xl shadow-md hover:border-yellow-400/50 duration-200
+}
+
+.componentBorderStyleRichInput {
+    @apply  border-inputsBorder border-component  rounded-2xl shadow-md  hover:border-yellow-400/50 duration-200
+}
+
+.componentBorderStyleWithoutHover {
+    @apply   border-componentColorDarkest h-12 border-component  rounded-2xl shadow-md cursor-pointer
+}
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+    -webkit-appearance: none !important;
+}
+
+
+input[type="range"] {
+    /* To remove default styles appplied by webkit browsers */
+    -webkit-appearance: none;
+    background: transparent;
+    position: relative;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    /* Removes the default styling */
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    @apply w-4 h-14 rounded-md bg-componentColorGreen  ring-2 ring-componentColorDarkest
+}
+
+option:not(:checked) {
+
+    @apply bg-toMainBackground
+}
+option:checked {
+    @apply bg-toMainBackground
+}
+
+/*COMPONENTS*/
+
+.shadow-menu{
+    @apply shadow-md
+}
+
+.menuProfileCircleButtonStyle{
+    @apply border-component   border-componentColorDarkest   rounded-full  shadow-md
+}
+
+.menuProfileCircleButtonClickedStyle{
+    @apply border-component   border-componentColorDarkest/50  rounded-full bg-black/20 opacity-60 shadow-inner
+}
+
+.postReactionStyle{
+    @apply rounded-full w-8 h-8 border-1 border-gray-300  shadow-md
+}
+
+.postBorder{
+    @apply relative rounded-xl border-1 shadow-lg border-componentColorDarkest
+}
+
+.squareButtonStyle{
+    @apply  border-2 border-borderColor p-1.5 shadow-md opacity-80 rounded-xl
+}
+
+.circleButton{
+    @apply p-2 border-1  border-componentColorDarkest
+    shadow-md   rounded-full
+}
+
+.createPostBorderAndInner{
+    @apply  bg-gradient-to-b from-white to-gray-50 rounded-2xl border-2 border-gray-300
+}
+
+.buttonAnimation {
+    @apply transform hover:scale-110 duration-75 active:scale-90 cursor-pointer
+}
+
+.componentInteractionAnimation {
+    @apply transform hover:scale-105 duration-75 active:scale-100 mx-1.5 my-0.5
+}
+
+.questionMarkSection{
+    @apply rounded-xl border-4 bg-gradient-to-r from-gray-300 to-white py-4
+    flex flex-col items-center  justify-center
+}
+
+.animation {
+    animation-duration: 0.5s;
+    animation-name: createBox;
+    margin: 0 auto;
+    width: 100%;
+}
+
+@keyframes lineInserted {
+    from {
+        height: 0;
+        width: 0;
+    }
+    to {
+        height: 600px;
+        width: 100%;
+    }
+}
+
+@keyframes createBox {
+    from {
+        transform: scale(0);
+        height: 0;
+        width: 0;
+    }
+    to {
+        transform: scale(1);
+        height: 600px;
+        width: 100%;
+    }
+}
+
+@keyframes grow {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+#slider {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: blue;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+}
+
+.slide-in {
+    animation: slide-in 0.3s forwards;
+    -webkit-animation: slide-in 0.3s forwards;
+}
+
+.slide-out {
+    animation: slide-out 0.3s forwards;
+    -webkit-animation: slide-out 0.3s forwards;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@-webkit-keyframes slide-in {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        -webkit-transform: translateX(0%);
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@-webkit-keyframes slide-out {
+    0% {
+        -webkit-transform: translateX(0%);
+    }
+
+    100% {
+        -webkit-transform: translateX(100%);
+    }
+}
+
+
+.slide-right-in {
+    animation: slide-right-in 0.3s forwards;
+    -webkit-animation: slide-right-in 0.3s forwards;
+}
+
+.slide-right-out {
+    animation: slide-right-out 0.3s forwards;
+    -webkit-animation: slide-right-out 0.3s forwards;
+}
+
+@keyframes slide-right-in {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@-webkit-keyframes slide-right-in {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        -webkit-transform: translateX(0%);
+    }
+}
+
+@keyframes slide-right-out {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@-webkit-keyframes slide-right-out {
+    0% {
+        -webkit-transform: translateX(0%);
+    }
+
+    100% {
+        -webkit-transform: translateX(-100%);
+    }
+}
+
+.slide-in-y {
+    animation: slide-in-y 0.2s forwards;
+    -webkit-animation: slide-in-y 0.2s forwards;
+}
+
+@keyframes slide-in-y {
+    0% {
+        margin: -100% 0 0;
+        opacity: 0;
+    }
+    55%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 0.8;
+    }
+    100% {
+        margin: 0;
+        opacity: 1;
+    }
+}
+
+.slide-out-y {
+    animation: slide-out-y 0.15s forwards;
+    -webkit-animation: slide-out-y 0.15s forwards;
+}
+
+@keyframes slide-out-y {
+    0% {
+        margin: 0;
+        opacity: 1;
+    }
+    20%{
+        opacity: 0;
+    }
+    80%{
+        opacity:0;
+    }
+    100% {
+        margin: -100% 0 0;
+        opacity: 0;
+    }
+}
+
+
+/*.input-container input {*/
+/*    border: none;*/
+/*    box-sizing: border-box;*/
+/*    outline: 0;*/
+/*    padding: .75rem;*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*}*/
+
+
+.radio-item {
+    display: inline-block;
+    position: relative;
+    padding: 0 1px;
+    margin: 6px 0 0;
+}
+
+
+.radio-item input[type='radio'] {
+    display: none;
+}
+
+.radio-item label {
+
+    cursor: pointer;
+}
+
+.radio-item label:before {
+    content: " ";
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 6px 0 6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 11px;
+    background-color: transparent;
+    cursor: pointer;
+
+    @apply border-2 border-componentColorDarkest
+}
+
+
+.radio-item input[type=radio]:checked + label:after {
+    border-radius: 11px;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 9px;
+    left: 5px;
+    content: " ";
+    display: block;
+    cursor: pointer;
+    margin: 0 0 0 6px;
+    @apply bg-componentColorGreen ring-4 ring-componentColorDarkest
+}
+
+.my-element {
+    height: 90vh;
+    min-height: -webkit-fill-available;
+}
+
+
+
+
+
+input[type="checkbox"] {
+    visibility: hidden;
+    display: inline-block;
+    position: relative;
+    padding: 0 1px;
+    margin: 10px 0 0;
+}
+
+label {
+    cursor: pointer;
+
+    @apply text-white font-bold
+}
+
+input[type="checkbox"] + label:before {
+    content: "";
+    display: inline-block;
+    font: 20px/1em sans-serif;
+    height: 20px;
+    margin: 7px .25em 8px -10px;
+    padding: 0;
+    vertical-align: top;
+    width: 20px;
+
+    @apply  border-2 rounded-md border-componentColorDarkest
+}
+input[type="checkbox"]:checked + label:before {
+    background: #fff;
+    color: #fff;
+    content: "✔";
+    text-align: center;
+
+
+    @apply text-white  bg-componentColorGreen ring-1 ring-componentColorDarkest
+}
+input[type="checkbox"]:checked + label:after {
+    font-weight: bold;
+}
+
+input[type="checkbox"]:focus + label::before {
+    outline: rgb(59, 153, 252) auto 5px;
+}
+
+
+
+.animationss {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgba(70,208,251,1) 3%, rgba(70,208,251,0.9) 38%, rgba(70,208,251,1) 68%, rgba(70,208,251,0.9) 98%);
+    animation: gradient 30s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 50%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 20s -6s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 36s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 40s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}

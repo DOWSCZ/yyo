@@ -1,0 +1,61 @@
+﻿@page "/"
+@using BlazorApp18.Classes
+
+
+<div class="flex flex-col gap-8">
+    <p class="text-2xl font-bold">
+        Ahoj, tady jsou tři požadavky, které extrémně potřebujeme
+        (kdyby si cokoli nevěděl nebo nebylo jasné tak dej vědět):
+    </p>
+
+    <div class="flex flex-col gap-2">
+        <p>
+            1. Přirozenej break line u outlined textu, u tohoto textu je problém, že nefunguje cross platform nic co by
+            fungovalo bez chyby až na tento svg formát. Máme zatím jen header a paragraf. Takže to dát do komponenty, která bude zalamovat.
+        </p>
+        <Post></Post>
+    </div>
+
+    <hr/>
+
+    <div class="flex flex-col gap-2">
+        <p>
+            2. Tady jak jsme se bavili, select s možností výběru obrázku. Člověk na to klikne a obrazovka zčerná s opacity
+            samozřejmě a vybere, ať to má prosím nějakej interface.
+        </p>
+        <Select TEntity="DropDownItem" Items="Items" OnChanged="SelectChanged"></Select>
+    </div>
+
+    <hr/>
+
+    <div class="flex flex-col gap-2">
+        <p>
+            3. Speciální komponent, při kliknutí zčerná obrazovka s opacity a člověk začne psát nahoru a bude mu to nabízet možnosti, k výběru viz. obrázek.
+        </p>
+        <img src="3.jpg"/>
+        <Input Placeholder="Start typing your activity" OnChanged="InputChanged"></Input>
+    </div>
+</div>
+
+@code
+{
+    //"Aby tohle při kliknutí nahodilo průsvitnou černou přes celou stránku (i přes menu) a v ní možnosti" 
+    public List<ISelecatble> Items { get; set; } = new()
+    {
+        new DropDownItem { ImageUrl = "carDropdown.png", Text = "Text1" },
+        new DropDownItem { ImageUrl = "carDropdown.png", Text = "Text2" },
+        new DropDownItem { ImageUrl = "carDropdown.png", Text = "Text3" },
+        new DropDownItem { ImageUrl = "carDropdown.png", Text = "Text4" }
+    };
+
+    private void SelectChanged(ISelecatble? arg)
+    {
+        Console.WriteLine(arg?.Text);
+    }
+
+
+    private void InputChanged(string text)
+    {
+        Console.WriteLine(text);
+    }
+}

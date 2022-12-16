@@ -1,0 +1,72 @@
+﻿@inherits LayoutComponentBase
+
+<div class="max-w-sm my-element flex z-50 relative mx-auto antialiased">
+
+    <background class="absolute top-0 left-0 right-0 bottom-0 animationss">
+
+        <content @onscroll="ScrollEvent" class="absolute scrollbar-hide overflow-y-auto top-0 left-0 right-0 bottom-20 p-2 ">
+            @Body
+        </content>
+
+        <menu class="absolute bottom-0 left-0 right-0 h-20 flex items-center bg-amber-200 justify-between px-4">
+
+
+            Tohle je menu, průhledná černá při výběru ze selectu i inputu by měla přesahovat
+
+        </menu>
+
+    </background>
+</div>
+
+@code
+{
+    public enum ModeEnum
+    {
+        Feed,
+        CreateTask,
+        Profile,
+        Reaction,
+        CreateReaction
+    }
+
+    private bool BackgroundBlurred { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        return Task.CompletedTask;
+    }
+
+
+    public void ToCreateMode()
+    {
+        Mode = ModeEnum.CreateTask;
+    }
+
+    public void ToNormalMode()
+    {
+        Mode = ModeEnum.Feed;
+    }
+
+    public void ToProfileMode()
+    {
+        Mode = ModeEnum.Profile;
+    }
+
+    public void CreateTask()
+    {
+    }
+
+    public ModeEnum Mode { get; set; }
+
+    public int str { get; set; }
+
+    private void ScrollEvent(EventArgs args)
+    {
+        str++;
+    }
+
+    private void CreateReaction()
+    {
+        Mode = ModeEnum.Reaction;
+    }
+}
