@@ -1,0 +1,66 @@
+﻿<div class="relative flex justify-center items-center componentBorderStyleWithoutHover
+my-2 overflow-visible py-0 px-1 ">
+
+    <div class="absolute left-1 right-1 top-0 bottom-0  flex justify-evenly items-center">
+
+
+        <div class="h-11 w-[1px]   bg-white/40 @_leftLineHidden"></div>
+        <div class="h-11 w-[1px]   bg-white/50  "></div>
+        <div class="h-11 w-[1px]   bg-white/50  @_rightLineHidden"></div>
+
+    </div>
+    <div class="absolute left-2 right-2 top-0 bottom-0  flex justify-between items-center">
+
+
+        <div class="text-white/90  m-1">@LeftString</div>
+        <div class="text-white/90  m-1">@RightString</div>
+
+    </div>
+    <input class="w-full cursor-pointer" type="range" max="@MaxValue" min="@MinValue" @bind="@actualNumber" @bind:event="oninput"/>
+
+</div>
+
+@code {
+    [Parameter]
+    public string LeftString { get; set; }
+    [Parameter]
+    public string RightString { get; set; }
+
+    [Parameter]
+    public int MinValue { get; set; }
+
+    [Parameter]
+    public int MaxValue { get; set; }
+
+    [Parameter]
+    public int? ActualNumber { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            actualNumber = ActualNumber ?? 0;
+            _leftLineHidden = string.IsNullOrEmpty(LeftString) ? "" : "hidden";
+            _rightLineHidden = string.IsNullOrEmpty(RightString) ? "" : "hidden";
+            StateHasChanged();
+        }
+    }
+
+    [Parameter]
+    public EventCallback<int?> OnChanged { get; set; }
+
+    private int? actualNumber
+    {
+        get => _actualNumber;
+        set
+        {
+            _actualNumber = value;
+            if (value != null)
+                OnChanged.InvokeAsync(value);
+        }
+    }
+
+    private int? _actualNumber;
+    private string _rightLineHidden;
+    private string _leftLineHidden;
+}

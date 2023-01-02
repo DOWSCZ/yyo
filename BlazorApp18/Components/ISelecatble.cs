@@ -4,6 +4,7 @@ namespace BlazorApp18.Zadání;
 
 public interface ISelecatble
 {
+    int Id { get; set; }
     [Required]
     string Text { get; set; }
     [Required]
